@@ -11,6 +11,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Trigger API Call
+      run: | 
+        curl --location --request GET 'https://reqres.in/api/users?page=2'
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -20,4 +23,4 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync main.yml s3://testspoofbucket--delete
+      run: aws s3 sync TestRepoPOC/main.yml s3://testspoofbucket--delete
