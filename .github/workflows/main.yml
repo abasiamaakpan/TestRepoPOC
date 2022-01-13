@@ -5,7 +5,7 @@ on:
     branches:
     - main
 env:
-  SOURCE_DIR: 'TestRepoPOC'
+  SOURCE_DIR: '/TestRepoPOC/server.js'
 
 jobs:
   deploy:
