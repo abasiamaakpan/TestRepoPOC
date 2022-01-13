@@ -20,4 +20,4 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync server.js s3://testspoofbucket--delete
+      run: aws s3 sync main.yml s3://testspoofbucket--delete
