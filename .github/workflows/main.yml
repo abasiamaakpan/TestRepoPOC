@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        uses: actions/checkout@v2
       - id: set_var
-      - uses: actions/checkout@v2
         run: |
           content=`cat ./comfort.json`
           # the following lines are only required for multi line json
