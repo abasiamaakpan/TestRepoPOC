@@ -11,8 +11,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
     - name: test_loc
       run: |
         content=`cat ./Location/jsonconfig.json`
