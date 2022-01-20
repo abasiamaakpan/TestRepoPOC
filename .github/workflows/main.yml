@@ -13,6 +13,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: test_loc
+      run: |
+        content=`cat ./Location/jsonconfig.json`
+        content="${content//'%'/'%25'}"
+        content="${content//$'\n'/'%0A'}"
+        content="${content//$'\r'/'%0D'}"
+        echo "::set-output name=testJson::$content"
+        run: |
+          echo "${{fromJson(steps.test_loc.outputs.testJson).newlocation}}"
     # - name: Trigger API Call
     #   run: | 
     #     curl --location --request GET '${{secrets.URL}}'
