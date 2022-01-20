@@ -8,7 +8,8 @@ env:
   SOURCE_DIR: 'server.js'
 
 jobs:
-  deploy:
+  testJob:
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
