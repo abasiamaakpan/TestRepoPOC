@@ -9,6 +9,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - id: set_var
       - uses: actions/checkout@v2
         run: |
