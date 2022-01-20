@@ -1,0 +1,41 @@
+name: Upload Website
+
+on:
+  push:
+    branches:
+    - main
+env:
+  SOURCE_DIR: 'server.js'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    # - name: Trigger API Call
+    #   run: | 
+    #     curl --location --request GET '${{secrets.URL}}'
+
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v1
+    #   with:
+    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #     aws-region: us-east-2
+
+    # - name: Deploy static site to S3 bucket
+    #   #run: aws s3 sync ${{env.SOURCE_DIR}} s3://testspoofbucket--delete
+    #   run: aws s3 sync . s3://testspoofbucket --delete
+    - name: test_loc
+      run: |
+        content=`cat ./Location/jsonconfig.json`
+        content="${content//'%'/'%25'}"
+        content="${content//$'\n'/'%0A'}"
+        content="${content//$'\r'/'%0D'}"
+        echo "::set-output name=testJson::$content"
+      - run: |
+          echo "${{fromJson(steps.test_loc.outputs.testJson).newlocation}}"
+
+
+    
